@@ -6,22 +6,11 @@
 
 #include "iOS_device_info.hpp"
 
-#include "PlistCpp/Plist.hpp"
+#include <map>
+//#include <stdio.h>
 #include <sys/utsname.h>
 #include <sys/stat.h>
 #include <sys/sysctl.h>
-
-const std::map<std::string, boost::any> iOS_device_info::get_system_version_plist() {
-    static const std::string version_plist = "/System/Library/CoreServices/SystemVersion.plist";
-    std::map<std::string, boost::any> systemVersion;
-    
-    struct stat buffer;
-    if (stat (version_plist.c_str(), &buffer) == 0) {
-        Plist::readPlist("/System/Library/CoreServices/SystemVersion.plist", systemVersion);
-    }
-    
-    return systemVersion;
-}
 
 struct device_info {
     std::string name;
@@ -134,39 +123,28 @@ std::map<std::string, device_info> devices = {
     { "AudioAccessory1,2",  { .name="HomePod", .screen_dpi=-1, .screen_width_px=0, .screen_height_px=0, .screen_scale=1 } },
 };
 
+std::string get_sysinfo_by_name(const char* typeSpecifier) {
+    size_t size;
+    sysctlbyname(typeSpecifier, nullptr, &size, nullptr, 0);
+
+    auto *answer = static_cast<char *>(malloc(size));
+    sysctlbyname(typeSpecifier, answer, &size, nullptr, 0);
+
+    std::string result(answer);
+    free(answer);
+    return result;
+}
+
 const std::string iOS_device_info::get_os_version() {
-    std::map<std::string, boost::any> systemVersion = get_system_version_plist();
-    if (systemVersion.find("ProductVersion") == systemVersion.end()) {
-        return "";
-    } else {
-        return std::string(boost::any_cast<std::string>(systemVersion["ProductVersion"]));
-    }
+    return get_sysinfo_by_name("kern.osproductversion");
 }
 
 const std::string iOS_device_info::get_os_build_version() {
-    size_t size;
-    sysctlbyname("kern.osversion", nullptr, &size, nullptr, 0);
-    
-    auto *answer = static_cast<char *>(malloc(size));
-    sysctlbyname("kern.osversion", answer, &size, nullptr, 0);
-    
-    std::string result(answer);
-    free(answer);
-    
-    return std::string(result);
+    return get_sysinfo_by_name("kern.osversion");
 }
 
 const std::string iOS_device_info::get_darwin_version() {
-    size_t size;
-    sysctlbyname("kern.osrelease", nullptr, &size, nullptr, 0);
-    
-    auto *answer = static_cast<char *>(malloc(size));
-    sysctlbyname("kern.osrelease", answer, &size, nullptr, 0);
-    
-    std::string result(answer);
-    free(answer);
-    
-    return std::string(result);
+    return get_sysinfo_by_name("kern.osrelease");
 }
 
 const std::string iOS_device_info::get_device_identifier() {
@@ -235,7 +213,7 @@ const int iOS_device_info::get_device_screen_physical_width_px() {
         return 0;
     } else {
         if (devices[get_device_identifier()].name.find("Plus") != std::string::npos) {
-            return devices[get_device_identifier()].screen_width_px / 1.15;
+            return static_cast<int> (devices[get_device_identifier()].screen_width_px / 1.15);
         } else {
             return devices[get_device_identifier()].screen_width_px;
         }
@@ -247,7 +225,7 @@ const int iOS_device_info::get_device_screen_physical_height_px() {
         return 0;
     } else {
         if (devices[get_device_identifier()].name.find("Plus") != std::string::npos) {
-            return devices[get_device_identifier()].screen_height_px / 1.15;
+            return static_cast<int> (devices[get_device_identifier()].screen_height_px / 1.15);
         } else {
             return devices[get_device_identifier()].screen_height_px;
         }
