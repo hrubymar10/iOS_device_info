@@ -7,9 +7,6 @@
 #ifndef iOS_device_info_hpp
 #define iOS_device_info_hpp
 
-#include <boost/any.hpp>
-#include <map>
-#include <stdio.h>
 #include <string>
 
 class iOS_device_info
@@ -32,7 +29,6 @@ public:
     
 private:
     iOS_device_info() {}
-    static const std::map<std::string, boost::any> get_system_version_plist();
 };
 
 #endif /* iOS_device_info_hpp */
