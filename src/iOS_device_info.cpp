@@ -54,6 +54,9 @@ std::map<std::string, device_info> devices = {
     { "iPhone10,5",  { .name="iPhone 8 Plus (GSM)", .screen_dpi=401, .screen_width_px=1242, .screen_height_px=2208, .screen_scale=3 } },
     { "iPhone10,3",  { .name="iPhone X (CDMA)", .screen_dpi=458, .screen_width_px=1125, .screen_height_px=2436, .screen_scale=3 } },
     { "iPhone10,6",  { .name="iPhone X (GSM)", .screen_dpi=458, .screen_width_px=1125, .screen_height_px=2436, .screen_scale=3 } },
+    { "iPhone11,2",  { .name="iPhone XS", .screen_dpi=458, .screen_width_px=1125, .screen_height_px=2436, .screen_scale=3 } },
+    { "iPhone11,6",  { .name="iPhone XS Max", .screen_dpi=458, .screen_width_px=1242, .screen_height_px=2688, .screen_scale=3 } },
+    { "iPhone11,8",  { .name="iPhone XR", .screen_dpi=326, .screen_width_px=828, .screen_height_px=1792, .screen_scale=2 } },
     
     { "iPod1,1",  { .name="1st Gen iPod", .screen_dpi=163, .screen_width_px=320, .screen_height_px=480, .screen_scale=1 } },
     { "iPod2,1",  { .name="2nd Gen iPod", .screen_dpi=163, .screen_width_px=320, .screen_height_px=480, .screen_scale=1 } },
@@ -101,7 +104,15 @@ std::map<std::string, device_info> devices = {
     { "iPad7,4",  { .name="iPad Pro 10.5-inch", .screen_dpi=264, .screen_width_px=1668, .screen_height_px=2224, .screen_scale=2 } },
     { "iPad7,5",  { .name="iPad (2018) (WiFi)", .screen_dpi=264, .screen_width_px=1536, .screen_height_px=2048, .screen_scale=2 } },
     { "iPad7,6",  { .name="iPad (2018) (Cellular)", .screen_dpi=264, .screen_width_px=1536, .screen_height_px=2048, .screen_scale=2 } },
-    
+    { "iPad8,1",  { .name="iPad Pro (11-inch) (Cellular)", .screen_dpi=264, .screen_width_px=1668, .screen_height_px=2388, .screen_scale=2 } },
+    { "iPad8,2",  { .name="iPad Pro (11-inch) (Wi-Fi, 1 TB)", .screen_dpi=264, .screen_width_px=1668, .screen_height_px=2388, .screen_scale=2 } },
+    { "iPad8,3",  { .name="iPad Pro (11-inch) (Cellular)", .screen_dpi=264, .screen_width_px=1668, .screen_height_px=2388, .screen_scale=2 } },
+    { "iPad8,4",  { .name="iPad Pro (11-inch) (Cellular, 1 TB)", .screen_dpi=264, .screen_width_px=1668, .screen_height_px=2388, .screen_scale=2 } },
+    { "iPad8,5",  { .name="iPad Pro 3G (12.9 inch, WiFi)", .screen_dpi=264, .screen_width_px=2048, .screen_height_px=2732, .screen_scale=2 } },
+    { "iPad8,6",  { .name="iPad Pro 3G (12.9 inch, WiFi, 1 TB)", .screen_dpi=264, .screen_width_px=2048, .screen_height_px=2732, .screen_scale=2 } },
+    { "iPad8,7",  { .name="iPad Pro 3G (12.9 inch, Cellular)", .screen_dpi=264, .screen_width_px=2048, .screen_height_px=2732, .screen_scale=2 } },
+    { "iPad8,8",  { .name="iPad Pro 3G (12.9 inch, Cellular, 1 TB)", .screen_dpi=264, .screen_width_px=2048, .screen_height_px=2732, .screen_scale=2 } },
+
     { "Watch1,1",  { .name="Apple Watch 38mm case", .screen_dpi=326, .screen_width_px=272, .screen_height_px=340, .screen_scale=2 } },
     { "Watch1,2",  { .name="Apple Watch 42mm case", .screen_dpi=326, .screen_width_px=312, .screen_height_px=390, .screen_scale=2 } },
     { "Watch2,6",  { .name="Apple Watch Series 1 38mm case", .screen_dpi=326, .screen_width_px=272, .screen_height_px=340, .screen_scale=2 } },
@@ -112,6 +123,10 @@ std::map<std::string, device_info> devices = {
     { "Watch2,2",  { .name="Apple Watch Series 3 Cellular 42mm case", .screen_dpi=326, .screen_width_px=312, .screen_height_px=390, .screen_scale=2 } },
     { "Watch3,3",  { .name="Apple Watch Series 3 38mm case", .screen_dpi=326, .screen_width_px=272, .screen_height_px=340, .screen_scale=2 } },
     { "Watch3,4",  { .name="Apple Watch Series 3 42mm case", .screen_dpi=326, .screen_width_px=312, .screen_height_px=390, .screen_scale=2 } },
+    { "Watch4,1",  { .name="Apple Watch Series 4 40mm case", .screen_dpi=326, .screen_width_px=324, .screen_height_px=394, .screen_scale=2 } },
+    { "Watch4,2",  { .name="Apple Watch Series 4 44mm case", .screen_dpi=326, .screen_width_px=368, .screen_height_px=448, .screen_scale=2 } },
+    { "Watch4,3",  { .name="Apple Watch Series 4 Cellular 40mm case", .screen_dpi=326, .screen_width_px=324, .screen_height_px=394, .screen_scale=2 } },
+    { "Watch4,4",  { .name="Apple Watch Series 4 Cellular 44mm case", .screen_dpi=326, .screen_width_px=368, .screen_height_px=448, .screen_scale=2 } },
     
     { "AppleTV2,1",  { .name="Apple TV (2nd generation)", .screen_dpi=-1, .screen_width_px=0, .screen_height_px=0, .screen_scale=1 } },
     { "AppleTV3,1",  { .name="Apple TV (3rd generation)", .screen_dpi=-1, .screen_width_px=0, .screen_height_px=0, .screen_scale=1 } },
